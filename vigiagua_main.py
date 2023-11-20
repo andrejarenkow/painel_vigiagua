@@ -141,4 +141,28 @@ with col_cabecalho2:
     col1, col2, = st.columns(2)
     col1.metric('% Populaçao SAC tratada', (cadastro_por_crs['Sim'].sum()/cadastro_por_crs['total'].sum()*100).round(2))
     col2.metric('Populaçao Abastecida por SAC', (cadastro_por_crs['total'].sum()).round(2))
-    
+
+st.markdown("""
+<style>
+    [data-testid=stMetric] {
+        background: white;
+        color: #000000;
+        text-align:center;
+        border-radius: 20px;
+        border: 2px solid #000000;
+        box-sizing: border-box;
+        font-weight: bold;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<style>
+    [data-testid=stMetricLabel] {
+        color: #000000;
+        width: fit-content; 
+        margin: auto;
+        font-weight: bold;
+    }
+</style>
+""", unsafe_allow_html=True)
