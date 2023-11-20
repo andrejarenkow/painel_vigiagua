@@ -147,7 +147,6 @@ css='''
 [data-testid="stMetric"] {
 
     margin: auto;
-    background-color: #EEEEEE;
     border: 2px solid #CCCCCC;
     border-radius: 15px;
 }
