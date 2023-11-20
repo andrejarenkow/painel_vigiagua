@@ -72,7 +72,7 @@ map_fig = px.choropleth_mapbox(dados_mapa_final, geojson=dados_mapa_final.geomet
                           zoom=5.5,
                           mapbox_style="carto-darkmatter",
                           hover_name='NM_MUN',
-                          width=1800,
+                          width=1200,
                           height=700,
                           template='plotly_dark',
                           title = f'Porcentagem da população abastecida por SAC com água tratada, RS, {ano}')
