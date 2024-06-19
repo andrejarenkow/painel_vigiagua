@@ -156,7 +156,7 @@ with col1:
                         }
                         )
 
-    tab_municipio.dataframe(cadastro_por_municipio[['total', 'Porcentagem_tratada']], height = 670,use_container_width =True,
+    tab_municipio.dataframe(cadastro_por_municipio[['total', 'Porcentagem_tratada']], height = 670,use_container_width =False,
                  column_config={
                         "Porcentagem_tratada": st.column_config.ProgressColumn(
                         "% Pop SAC tratada",
