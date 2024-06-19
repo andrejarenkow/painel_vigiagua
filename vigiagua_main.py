@@ -110,7 +110,7 @@ cadastro_por_crs = pd.concat([cadastro_por_crs,tabela_divisao], axis=1)
 
 # Porcentagem por municipio
 
-cadastro_por_municipio = cadastro_populacao_abastecida_sac_ano.groupby('Município').sum()
+cadastro_por_municipio = cadastro_populacao_abastecida_sac_ano.groupby(['Município','Regional de Saúde']).sum()
 cadastro_por_municipio['Porcentagem_tratada'] = (cadastro_por_municipio['Sim']/cadastro_por_municipio['total']*100).round(2)
 cadastro_por_municipio['total'] = cadastro_por_municipio['total'].astype(int)
 cadastro_por_municipio = cadastro_por_municipio.rename_axis('Município')
