@@ -47,10 +47,12 @@ municipios["IBGE6"] = municipios["CD_MUN"].str.slice(0,6)
 col_cabecalho1, col_cabecalho2 = st.columns([1,1.5])
 with col_cabecalho1:
     ano = st.selectbox('Selecione o ano',sorted(cadastro_populacao_abastecida_sac['Ano de referência'].unique()), index =10)
+    crs_selecionada = st.selectbox('Selecione a CRS',sorted(cadastro_populacao_abastecida_sac['Regional de Saúde'].unique()))
 
 
 #Tratamento por ano
 filtro_ano = cadastro_populacao_abastecida_sac['Ano de referência'] == ano
+filtro_crs = cadastro_populacao_abastecida_sac['Regional de Saúde'] == crs_selecionada
 
 
 cadastro_populacao_abastecida_sac_ano = cadastro_populacao_abastecida_sac[filtro_ano]
@@ -128,7 +130,7 @@ tabela_divisao = (tabela_grafico_sim/tabela_grafico*100).round(2)
 tabela_divisao['ListaLinhas'] = tabela_divisao.apply(list, axis=1)
 
 cadastro_por_municipio = pd.concat([cadastro_por_municipio,tabela_divisao], axis=1)
-
+cadastro_por_municipio
 # Ajeitando Layout
 col1, col2 = st.columns([1,1.5])
 
