@@ -166,14 +166,7 @@ with col1:
                         max_value=100,),
                         'total': st.column_config.NumberColumn(
                             'Pop. SAC',
-                            help="Populacao abastecida por SAC na CRS",),
-                        "ListaLinhas": st.column_config.LineChartColumn(
-                        "Histórico",
-                        help="Porcentagem da populacao abastecida por SAC com tratamento",
-                        width = 'medium',
-                        y_min = 0,
-                        y_max=100
-                        )
+                            help="Populacao abastecida por SAC na CRS",)
                         }
                         )
 
