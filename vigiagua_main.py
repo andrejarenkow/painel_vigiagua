@@ -30,6 +30,7 @@ def load_geodata(url):
 
 #Arquivo com dados de tratamento para SAC
 cadastro_populacao_abastecida_sac = load_data('Vigiagua/dados_tratamento_sac.zip')
+cadastro_populacao_abastecida_sac = cadastro_populacao_abastecida_sac[cadastro_populacao_abastecida_sac['Tipo da Forma de Abastecimento']=='SAC']
 
 # Função para acrescentar zeros à esquerda
 def acrescentar_zeros(valor, comprimento_alvo=7):
