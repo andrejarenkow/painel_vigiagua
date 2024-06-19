@@ -96,11 +96,11 @@ cadastro_por_crs = cadastro_por_crs.rename_axis('CRS')
 
 tabela_grafico = pd.pivot_table(cadastro_populacao_abastecida_sac,
                                  index='Regional de Saúde', columns='Ano de referência',
-                                 values='populacao_abastecida', aggfunc='sum')
+                                 values='População estimada', aggfunc='sum')
 
 filtro_desinfeccao = cadastro_populacao_abastecida_sac["Desinfecção"]=='Sim'
 tabela_grafico_sim = pd.pivot_table(cadastro_populacao_abastecida_sac[filtro_desinfeccao], index='Regional de Saúde', columns='Ano de referência',
-               values='populacao_abastecida', aggfunc='sum')
+               values='População estimada', aggfunc='sum')
 
 
 tabela_divisao = (tabela_grafico_sim/tabela_grafico*100).round(2)
