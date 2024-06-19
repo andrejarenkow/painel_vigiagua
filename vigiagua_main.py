@@ -53,6 +53,7 @@ with col_cabecalho1:
 #Tratamento por ano
 filtro_ano = cadastro_populacao_abastecida_sac['Ano de referência'] == ano
 filtro_crs = cadastro_populacao_abastecida_sac['Regional de Saúde'] == crs_selecionada
+municipios_da_crs = cadastro_populacao_abastecida_sac[filtro_crs]['Município']
 
 
 cadastro_populacao_abastecida_sac_ano = cadastro_populacao_abastecida_sac[filtro_ano]
@@ -110,7 +111,7 @@ cadastro_por_crs = pd.concat([cadastro_por_crs,tabela_divisao], axis=1)
 
 # Porcentagem por municipio
 
-cadastro_por_municipio = cadastro_populacao_abastecida_sac_ano.groupby(['Município','Regional de Saúde']).sum()
+cadastro_por_municipio = cadastro_populacao_abastecida_sac_ano.groupby(['Município']).sum()
 cadastro_por_municipio['Porcentagem_tratada'] = (cadastro_por_municipio['Sim']/cadastro_por_municipio['total']*100).round(2)
 cadastro_por_municipio['total'] = cadastro_por_municipio['total'].astype(int)
 cadastro_por_municipio = cadastro_por_municipio.rename_axis('Município')
