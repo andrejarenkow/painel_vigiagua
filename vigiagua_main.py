@@ -54,7 +54,7 @@ with col_cabecalho1:
 filtro_ano = cadastro_populacao_abastecida_sac['Ano de referência'] == ano
 
 cadastro_populacao_abastecida_sac_ano = cadastro_populacao_abastecida_sac[filtro_ano]
-cadastro_populacao_abastecida_sac_ano = pd.pivot_table(cadastro_populacao_abastecida_sac_ano, index=['Regional de Saúde','Código IBGE', 'Município'], columns=['Desinfecção'], values='populacao_abastecida', aggfunc='sum').fillna(0)
+cadastro_populacao_abastecida_sac_ano = pd.pivot_table(cadastro_populacao_abastecida_sac_ano, index=['Regional de Saúde','Código IBGE', 'Município'], columns=['Desinfecção'], values='População estimada', aggfunc='sum').fillna(0)
 cadastro_populacao_abastecida_sac_ano['total'] = cadastro_populacao_abastecida_sac_ano.sum(axis=1)
 cadastro_populacao_abastecida_sac_ano['Porcentagem_tratada'] = (cadastro_populacao_abastecida_sac_ano['Sim']/cadastro_populacao_abastecida_sac_ano['total']*100).round(2)
 cadastro_populacao_abastecida_sac_ano.reset_index(inplace=True)
