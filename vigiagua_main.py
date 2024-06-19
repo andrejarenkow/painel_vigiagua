@@ -131,7 +131,7 @@ tabela_divisao = (tabela_grafico_sim/tabela_grafico*100).round(2)
 tabela_divisao['ListaLinhas'] = tabela_divisao.apply(list, axis=1)
 
 cadastro_por_municipio = pd.concat([cadastro_por_municipio,tabela_divisao], axis=1)
-cadastro_por_municipio = cadastro_por_municipio[cadastro_por_municipio['Município'].isin(municipios_da_crs)]
+cadastro_por_municipio" = cadastro_por_municipio[cadastro_por_municipio['Município'].isin(municipios_da_crs)]
 # Ajeitando Layout
 col1, col2 = st.columns([1,1.5])
 
