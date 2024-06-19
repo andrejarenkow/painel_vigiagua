@@ -101,27 +101,24 @@ filtro_desinfeccao = cadastro_populacao_abastecida_sac["Desinfecção"]=='Sim'
 tabela_grafico_sim = pd.pivot_table(cadastro_populacao_abastecida_sac[filtro_desinfeccao], index='Regional de Saúde', columns='Ano de referência',
                values='População estimada', aggfunc='sum')
 
-
 tabela_divisao = (tabela_grafico_sim/tabela_grafico*100).round(2)
-
-
 tabela_divisao['ListaLinhas'] = tabela_divisao.apply(list, axis=1)
 
 cadastro_por_crs = pd.concat([cadastro_por_crs,tabela_divisao], axis=1)
 
 # Porcentagem por municipio
 
-cadastro_por_municipio = cadastro_populacao_abastecida_sac_ano.groupby('Regional de Saúde').sum()
+cadastro_por_municipio = cadastro_populacao_abastecida_sac_ano.groupby('Município').sum()
 cadastro_por_municipio['Porcentagem_tratada'] = (cadastro_por_municipio['Sim']/cadastro_por_municipio['total']*100).round(2)
 cadastro_por_municipio['total'] = cadastro_por_municipio['total'].astype(int)
-cadastro_por_municipio = cadastro_por_crs.rename_axis('CRS')
+cadastro_por_municipio = cadastro_por_crs.rename_axis('Município')
 
 tabela_grafico = pd.pivot_table(cadastro_populacao_abastecida_sac,
-                                 index='Regional de Saúde', columns='Ano de referência',
+                                 index='Município', columns='Ano de referência',
                                  values='População estimada', aggfunc='sum')
 
 filtro_desinfeccao = cadastro_populacao_abastecida_sac["Desinfecção"]=='Sim'
-tabela_grafico_sim = pd.pivot_table(cadastro_populacao_abastecida_sac[filtro_desinfeccao], index='Regional de Saúde', columns='Ano de referência',
+tabela_grafico_sim = pd.pivot_table(cadastro_populacao_abastecida_sac[filtro_desinfeccao], index='Município', columns='Ano de referência',
                values='População estimada', aggfunc='sum')
 
 
