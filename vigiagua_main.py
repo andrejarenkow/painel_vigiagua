@@ -59,7 +59,6 @@ cadastro_populacao_abastecida_sac_ano['total'] = cadastro_populacao_abastecida_s
 cadastro_populacao_abastecida_sac_ano['Porcentagem_tratada'] = (cadastro_populacao_abastecida_sac_ano['Sim']/cadastro_populacao_abastecida_sac_ano['total']*100).round(2)
 cadastro_populacao_abastecida_sac_ano.reset_index(inplace=True)
 cadastro_populacao_abastecida_sac_ano['Código IBGE'] = cadastro_populacao_abastecida_sac_ano['Código IBGE'].astype(str)
-st.dataframe(cadastro_populacao_abastecida_sac_ano[['Regional de Saúde', 'Município', 'Porcentagem_tratada']])
 
 #Juntando os dois
 dados_mapa_final = municipios.merge(cadastro_populacao_abastecida_sac_ano, left_on = 'IBGE6', right_on='Código IBGE', how='left')
@@ -114,7 +113,9 @@ cadastro_por_crs = pd.concat([cadastro_por_crs,tabela_divisao], axis=1)
 col1, col2 = st.columns([1,1.5])
 
 with col1:
-    st.dataframe(cadastro_por_crs[['total', 'Porcentagem_tratada','ListaLinhas']], height = 670,use_container_width =True,
+    tab_crs, tab_municipio = st.tab(['CRS', 'Município'])
+                                     
+    tab_crs.dataframe(cadastro_por_crs[['total', 'Porcentagem_tratada','ListaLinhas']], height = 670,use_container_width =True,
                  column_config={
                         "Porcentagem_tratada": st.column_config.ProgressColumn(
                         "% Pop SAC tratada",
