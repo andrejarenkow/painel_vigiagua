@@ -113,7 +113,7 @@ cadastro_por_crs = pd.concat([cadastro_por_crs,tabela_divisao], axis=1)
 col1, col2 = st.columns([1,1.5])
 
 with col1:
-    tab_crs, tab_municipio = st.tab(['CRS', 'Município'])
+    tab_crs, tab_municipio = st.tabs(['CRS', 'Município'])
                                      
     tab_crs.dataframe(cadastro_por_crs[['total', 'Porcentagem_tratada','ListaLinhas']], height = 670,use_container_width =True,
                  column_config={
