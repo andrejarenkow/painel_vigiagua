@@ -49,8 +49,6 @@ with col_cabecalho1:
     ano = st.selectbox('Selecione o ano',sorted(cadastro_populacao_abastecida_sac['Ano de referência'].unique()), index =9)
 
 
-    
-
 #Tratamento por ano
 filtro_ano = cadastro_populacao_abastecida_sac['Ano de referência'] == ano
 
@@ -60,6 +58,7 @@ cadastro_populacao_abastecida_sac_ano['total'] = cadastro_populacao_abastecida_s
 cadastro_populacao_abastecida_sac_ano['Porcentagem_tratada'] = (cadastro_populacao_abastecida_sac_ano['Sim']/cadastro_populacao_abastecida_sac_ano['total']*100).round(2)
 cadastro_populacao_abastecida_sac_ano.reset_index(inplace=True)
 cadastro_populacao_abastecida_sac_ano['Código IBGE'] = cadastro_populacao_abastecida_sac_ano['Código IBGE'].astype(str)
+cadastro_populacao_abastecida_sac_ano
 
 #Juntando os dois
 dados_mapa_final = municipios.merge(cadastro_populacao_abastecida_sac_ano, left_on = 'IBGE6', right_on='Código IBGE', how='left')
