@@ -52,13 +52,14 @@ with col_cabecalho1:
 #Tratamento por ano
 filtro_ano = cadastro_populacao_abastecida_sac['Ano de referência'] == ano
 
+
 cadastro_populacao_abastecida_sac_ano = cadastro_populacao_abastecida_sac[filtro_ano]
 cadastro_populacao_abastecida_sac_ano = pd.pivot_table(cadastro_populacao_abastecida_sac_ano, index=['Regional de Saúde','Código IBGE', 'Município'], columns=['Desinfecção'], values='População estimada', aggfunc='sum').fillna(0)
 cadastro_populacao_abastecida_sac_ano['total'] = cadastro_populacao_abastecida_sac_ano.sum(axis=1)
 cadastro_populacao_abastecida_sac_ano['Porcentagem_tratada'] = (cadastro_populacao_abastecida_sac_ano['Sim']/cadastro_populacao_abastecida_sac_ano['total']*100).round(2)
 cadastro_populacao_abastecida_sac_ano.reset_index(inplace=True)
 cadastro_populacao_abastecida_sac_ano['Código IBGE'] = cadastro_populacao_abastecida_sac_ano['Código IBGE'].astype(str)
-cadastro_populacao_abastecida_sac_ano
+st.dataframe(cadastro_populacao_abastecida_sac_ano[['Regional de Saúde', 'Município', 'Porcentagem_tratada']])
 
 #Juntando os dois
 dados_mapa_final = municipios.merge(cadastro_populacao_abastecida_sac_ano, left_on = 'IBGE6', right_on='Código IBGE', how='left')
