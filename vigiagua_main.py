@@ -54,7 +54,7 @@ with col_cabecalho1:
 filtro_ano = cadastro_populacao_abastecida_sac['Ano de referência'] == ano
 filtro_crs = cadastro_populacao_abastecida_sac['Regional de Saúde'] == crs_selecionada
 municipios_da_crs = sorted(list(cadastro_populacao_abastecida_sac[filtro_crs]['Município'].unique()))
-municipios_da_crs
+
 
 cadastro_populacao_abastecida_sac_ano = cadastro_populacao_abastecida_sac[filtro_ano]
 cadastro_populacao_abastecida_sac_ano = pd.pivot_table(cadastro_populacao_abastecida_sac_ano, index=['Regional de Saúde','Código IBGE', 'Município'], columns=['Desinfecção'], values='População estimada', aggfunc='sum').fillna(0)
