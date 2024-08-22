@@ -131,7 +131,6 @@ tabela_divisao['ListaLinhas'] = tabela_divisao.apply(list, axis=1)
 cadastro_por_macro = pd.concat([cadastro_por_macro,tabela_divisao], axis=1)
 
 
-
 # Porcentagem por Região de Saúde
 
 cadastro_por_regiao_saude = cadastro_populacao_abastecida_sac_ano.groupby('Região_saude').sum()
@@ -144,8 +143,7 @@ tabela_grafico = pd.pivot_table(cadastro_populacao_abastecida_sac,
                                  values='População estimada', aggfunc='sum')
 
 filtro_desinfeccao = cadastro_populacao_abastecida_sac["Desinfecção"]=='Sim'
-tabela_grafico_sim = pd.pivot_table(cadastro_por_regiao_saude[filtro_desinfeccao], index='Região_saude', columns='Ano de referência',
-               values='População estimada', aggfunc='sum')
+tabela_grafico_sim = pd.pivot_table(cadastro_por_regiao_saude[filtro_desinfeccao], index='Região de Saúde', columns='Ano de referência', values='População estimada', aggfunc='sum')
 
 tabela_divisao = (tabela_grafico_sim/tabela_grafico*100).round(2)
 tabela_divisao['ListaLinhas'] = tabela_divisao.apply(list, axis=1)
