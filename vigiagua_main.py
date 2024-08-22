@@ -19,7 +19,7 @@ st.header('Painel de análise da população abastecida por SAC no RS')
 
 #Criando funçoes de cache para loading
 @st.cache_data #nao precisa fazer o loading o tempo todo
-def load_data(url, ttl=60):
+def load_data(url, ttl=5):
     df = pd.read_csv(url, sep=';')
     return df
 
