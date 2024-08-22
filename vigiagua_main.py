@@ -63,9 +63,6 @@ cadastro_populacao_abastecida_sac_ano['Porcentagem_tratada'] = (cadastro_populac
 cadastro_populacao_abastecida_sac_ano.reset_index(inplace=True)
 cadastro_populacao_abastecida_sac_ano['Código IBGE'] = cadastro_populacao_abastecida_sac_ano['Código IBGE'].astype(str)
 
-# Debug
-cadastro_populacao_abastecida_sac_ano
-
 #Juntando os dois
 dados_mapa_final = municipios.merge(cadastro_populacao_abastecida_sac_ano, left_on = 'IBGE6', right_on='Código IBGE', how='left')
 
@@ -137,7 +134,6 @@ cadastro_por_regiao_saude = cadastro_populacao_abastecida_sac_ano.groupby('Regi�
 cadastro_por_regiao_saude['Porcentagem_tratada'] = (cadastro_por_regiao_saude['Sim']/cadastro_por_regiao_saude['total']*100).round(2)
 cadastro_por_regiao_saude['total'] = cadastro_por_regiao_saude['total'].astype(int)
 cadastro_por_regiao_saude = cadastro_por_regiao_saude.rename_axis('Região de Saúde')
-cadastro_por_regiao_saude
 tabela_grafico = pd.pivot_table(cadastro_populacao_abastecida_sac,
                                  index='Região_saude', columns='Ano de referência',
                                  values='População estimada', aggfunc='sum')
@@ -181,7 +177,7 @@ col1, col2 = st.columns([1,1.5])
 with col1:
     tab_macro, tab_regiao, tab_crs, tab_municipio = st.tabs(['Macro','Região de Saúde','CRS', 'Município'])
     
-    tab_macro.dataframe(cadastro_por_macro[['total', 'Porcentagem_tratada','ListaLinhas']], height = 670,use_container_width =True,
+    tab_macro.dataframe(cadastro_por_macro[['total', 'Porcentagem_tratada','ListaLinhas']], height = 400,use_container_width =True,
                  column_config={
                         "Porcentagem_tratada": st.column_config.ProgressColumn(
                         "% Pop SAC tratada",
@@ -201,7 +197,28 @@ with col1:
                         )
                         }
                         )
-                                     
+
+    tab_regiao.dataframe(cadastro_por_regiao_saude[['total', 'Porcentagem_tratada','ListaLinhas']], height = 670,use_container_width =True,
+                 column_config={
+                        "Porcentagem_tratada": st.column_config.ProgressColumn(
+                        "% Pop SAC tratada",
+                        help="Porcentagem da populacao abastecida por SAC com tratamento",
+                        format="%f",
+                        min_value=0,
+                        max_value=100,),
+                        'total': st.column_config.NumberColumn(
+                            'Pop. SAC',
+                            help="Populacao abastecida por SAC na CRS",),
+                        "ListaLinhas": st.column_config.LineChartColumn(
+                        "Histórico",
+                        help="Porcentagem da populacao abastecida por SAC com tratamento",
+                        width = 'medium',
+                        y_min = 0,
+                        y_max=100
+                        )
+                        }
+                        )
+    
     tab_crs.dataframe(cadastro_por_crs[['total', 'Porcentagem_tratada','ListaLinhas']], height = 670,use_container_width =True,
                  column_config={
                         "Porcentagem_tratada": st.column_config.ProgressColumn(
