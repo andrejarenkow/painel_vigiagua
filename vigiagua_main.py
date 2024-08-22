@@ -57,6 +57,7 @@ municipios_da_crs = sorted(list(cadastro_populacao_abastecida_sac[filtro_crs]['M
 
 
 cadastro_populacao_abastecida_sac_ano = cadastro_populacao_abastecida_sac[filtro_ano]
+cadastro_populacao_abastecida_sac_ano
 cadastro_populacao_abastecida_sac_ano = pd.pivot_table(cadastro_populacao_abastecida_sac_ano, index=['Macro','Região_saude','Regional de Saúde','Código IBGE', 'Município'], columns=['Desinfecção'], values='População estimada', aggfunc='sum').fillna(0)
 cadastro_populacao_abastecida_sac_ano['total'] = cadastro_populacao_abastecida_sac_ano.sum(axis=1)
 cadastro_populacao_abastecida_sac_ano['Porcentagem_tratada'] = (cadastro_populacao_abastecida_sac_ano['Sim']/cadastro_populacao_abastecida_sac_ano['total']*100).round(2)
