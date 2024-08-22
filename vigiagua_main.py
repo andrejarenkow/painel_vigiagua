@@ -137,7 +137,7 @@ cadastro_por_regiao_saude = cadastro_populacao_abastecida_sac_ano.groupby('Regi�
 cadastro_por_regiao_saude['Porcentagem_tratada'] = (cadastro_por_regiao_saude['Sim']/cadastro_por_regiao_saude['total']*100).round(2)
 cadastro_por_regiao_saude['total'] = cadastro_por_regiao_saude['total'].astype(int)
 cadastro_por_regiao_saude = cadastro_por_regiao_saude.rename_axis('Região de Saúde')
-
+cadastro_por_regiao_saude
 tabela_grafico = pd.pivot_table(cadastro_populacao_abastecida_sac,
                                  index='Região_saude', columns='Ano de referência',
                                  values='População estimada', aggfunc='sum')
