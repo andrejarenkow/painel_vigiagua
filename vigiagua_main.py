@@ -47,7 +47,7 @@ municipios["IBGE6"] = municipios["CD_MUN"].str.slice(0,6)
 col_cabecalho1, col_cabecalho2 = st.columns([1,1.5])
 with col_cabecalho1:
     ano = st.selectbox('Selecione o ano',sorted(cadastro_populacao_abastecida_sac['Ano de referência'].unique()), index =10)
-    crs_selecionada = st.selectbox('Selecione a CRS',sorted(cadastro_populacao_abastecida_sac['Regional de Saúde'].unique()))
+    #crs_selecionada = st.selectbox('Selecione a CRS',sorted(cadastro_populacao_abastecida_sac['Regional de Saúde'].unique()))
 
 
 #Tratamento por ano
