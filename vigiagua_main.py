@@ -198,7 +198,7 @@ with col1:
                         }
                         )
 
-    tab_regiao.dataframe(cadastro_por_regiao_saude[['total', 'Porcentagem_tratada','ListaLinhas']], height = 1000,use_container_width =True,
+    tab_regiao.dataframe(cadastro_por_regiao_saude[['total', 'Porcentagem_tratada','ListaLinhas']], height = 1100,use_container_width =True,
                  column_config={
                         "Porcentagem_tratada": st.column_config.ProgressColumn(
                         "% Pop SAC tratada",
