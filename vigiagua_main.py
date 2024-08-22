@@ -181,7 +181,7 @@ col1, col2 = st.columns([1,1.5])
 with col1:
     tab_macro, tab_regiao, tab_crs, tab_municipio = st.tabs(['Macro','Região de Saúde','CRS', 'Município'])
     
-    tab_macro.dataframe(cadastro_por_macros[['total', 'Porcentagem_tratada','ListaLinhas']], height = 670,use_container_width =True,
+    tab_macro.dataframe(cadastro_por_macro[['total', 'Porcentagem_tratada','ListaLinhas']], height = 670,use_container_width =True,
                  column_config={
                         "Porcentagem_tratada": st.column_config.ProgressColumn(
                         "% Pop SAC tratada",
