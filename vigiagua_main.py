@@ -52,8 +52,8 @@ with col_cabecalho1:
 
 #Tratamento por ano
 filtro_ano = cadastro_populacao_abastecida_sac['Ano de referência'] == ano
-filtro_crs = cadastro_populacao_abastecida_sac['Regional de Saúde'] == crs_selecionada
-municipios_da_crs = sorted(list(cadastro_populacao_abastecida_sac[filtro_crs]['Município'].unique()))
+#filtro_crs = cadastro_populacao_abastecida_sac['Regional de Saúde'] == crs_selecionada
+#municipios_da_crs = sorted(list(cadastro_populacao_abastecida_sac[filtro_crs]['Município'].unique()))
 
 
 cadastro_populacao_abastecida_sac_ano = cadastro_populacao_abastecida_sac[filtro_ano]
@@ -168,7 +168,7 @@ tabela_divisao = (tabela_grafico_sim/tabela_grafico*100).round(2)
 tabela_divisao['ListaLinhas'] = tabela_divisao.apply(list, axis=1)
 
 cadastro_por_municipio = pd.concat([cadastro_por_municipio,tabela_divisao], axis=1)
-cadastro_por_municipio = cadastro_por_municipio[cadastro_por_municipio.index.isin(municipios_da_crs)]
+#cadastro_por_municipio = cadastro_por_municipio[cadastro_por_municipio.index.isin(municipios_da_crs)]
 cadastro_por_municipio.sort_index(inplace=True)
 
 # Ajeitando Layout
