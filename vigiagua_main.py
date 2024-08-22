@@ -57,7 +57,6 @@ municipios_da_crs = sorted(list(cadastro_populacao_abastecida_sac[filtro_crs]['M
 
 
 cadastro_populacao_abastecida_sac_ano = cadastro_populacao_abastecida_sac[filtro_ano]
-cadastro_populacao_abastecida_sac_ano
 cadastro_populacao_abastecida_sac_ano = pd.pivot_table(cadastro_populacao_abastecida_sac_ano, index=['Macro','Região_saude','Regional de Saúde','Código IBGE', 'Município'], columns=['Desinfecção'], values='População estimada', aggfunc='sum').fillna(0)
 cadastro_populacao_abastecida_sac_ano['total'] = cadastro_populacao_abastecida_sac_ano.sum(axis=1)
 cadastro_populacao_abastecida_sac_ano['Porcentagem_tratada'] = (cadastro_populacao_abastecida_sac_ano['Sim']/cadastro_populacao_abastecida_sac_ano['total']*100).round(2)
@@ -65,7 +64,7 @@ cadastro_populacao_abastecida_sac_ano.reset_index(inplace=True)
 cadastro_populacao_abastecida_sac_ano['Código IBGE'] = cadastro_populacao_abastecida_sac_ano['Código IBGE'].astype(str)
 
 # Debug
-cadastro_populacao_abastecida_sac_ano
+#cadastro_populacao_abastecida_sac_ano
 
 #Juntando os dois
 dados_mapa_final = municipios.merge(cadastro_populacao_abastecida_sac_ano, left_on = 'IBGE6', right_on='Código IBGE', how='left')
@@ -145,7 +144,7 @@ tabela_grafico = pd.pivot_table(cadastro_populacao_abastecida_sac,
                                  values='População estimada', aggfunc='sum')
 
 filtro_desinfeccao = cadastro_populacao_abastecida_sac["Desinfecção"]=='Sim'
-tabela_grafico_sim = pd.pivot_table(cadastro_por_regiao_saude[filtro_desinfeccao], index='Regional de Saúde', columns='Ano de referência',
+tabela_grafico_sim = pd.pivot_table(cadastro_por_regiao_saude[filtro_desinfeccao], index='Região_saude', columns='Ano de referência',
                values='População estimada', aggfunc='sum')
 
 tabela_divisao = (tabela_grafico_sim/tabela_grafico*100).round(2)
