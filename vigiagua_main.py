@@ -64,7 +64,7 @@ cadastro_populacao_abastecida_sac_ano.reset_index(inplace=True)
 cadastro_populacao_abastecida_sac_ano['Código IBGE'] = cadastro_populacao_abastecida_sac_ano['Código IBGE'].astype(str)
 
 # Debug
-#cadastro_populacao_abastecida_sac_ano
+cadastro_populacao_abastecida_sac_ano
 
 #Juntando os dois
 dados_mapa_final = municipios.merge(cadastro_populacao_abastecida_sac_ano, left_on = 'IBGE6', right_on='Código IBGE', how='left')
