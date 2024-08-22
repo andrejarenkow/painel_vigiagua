@@ -122,7 +122,7 @@ tabela_grafico = pd.pivot_table(cadastro_populacao_abastecida_sac,
                                  values='População estimada', aggfunc='sum')
 
 filtro_desinfeccao = cadastro_populacao_abastecida_sac["Desinfecção"]=='Sim'
-tabela_grafico_sim = pd.pivot_table(cadastro_populacao_abastecida_sac[filtro_desinfeccao], index='Regional de Saúde', columns='Ano de referência',
+tabela_grafico_sim = pd.pivot_table(cadastro_populacao_abastecida_sac[filtro_desinfeccao], index='Macro', columns='Ano de referência',
                values='População estimada', aggfunc='sum')
 
 tabela_divisao = (tabela_grafico_sim/tabela_grafico*100).round(2)
